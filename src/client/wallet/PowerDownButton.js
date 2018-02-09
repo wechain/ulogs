@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import Action from '../components/Button/Action';
 import SteemConnect from '../steemConnectAPI';
-import { getAuthenticatedUser } from '../reducers';
+import { getAuthenticatedUser, getTotalVestingFundSteem, getTotalVestingShares } from '../reducers';
 import transferFormValidations from './transferFormValidations';
+import formatter from '../helpers/steemitFormatter';
 import './WalletAction.less';
 
 @transferFormValidations
@@ -15,15 +16,18 @@ import './WalletAction.less';
 @Form.create()
 @connect(state => ({
   user: getAuthenticatedUser(state),
+  totalVestingShares: getTotalVestingShares(state),
+  totalVestingFundSteem: getTotalVestingFundSteem(state),
 }))
-class PowerUpButton extends React.Component {
+class PowerDownButton extends React.Component {
   static propTypes = {
     intl: PropTypes.shape(),
     amountRegex: PropTypes.shape(),
     form: PropTypes.shape(),
     user: PropTypes.shape(),
-    validateSteemBalance: PropTypes.func,
-    validateUsername: PropTypes.func,
+    totalVestingShares: PropTypes.string,
+    totalVestingFundSteem: PropTypes.string,
+    validateSPBalance: PropTypes.func,
   };
 
   static defaultProps = {
@@ -31,8 +35,9 @@ class PowerUpButton extends React.Component {
     amountRegex: /^[0-9]*\.?[0-9]{0,3}$/,
     form: {},
     user: {},
-    validateSteemBalance: () => {},
-    validateUsername: () => {},
+    totalVestingShares: '',
+    totalVestingFundSteem: '',
+    validateSPBalance: () => {},
   };
 
   constructor(props) {
@@ -63,17 +68,16 @@ class PowerUpButton extends React.Component {
   }
 
   handleContinueClick() {
-    const { form, user } = this.props;
+    const { form } = this.props;
     form.validateFields({ force: true }, (errors, values) => {
       if (!errors) {
         const transferQuery = {
-          to: user.name,
-          amount: values.amount,
+          vesting_shares: values.amount,
         };
 
         if (values.memo) transferQuery.memo = values.memo;
 
-        const win = window.open(SteemConnect.sign('transfer_to_vesting', transferQuery), '_blank');
+        const win = window.open(SteemConnect.sign('withdraw_vesting', transferQuery), '_blank');
         win.focus();
         this.hideModal();
       }
@@ -104,57 +108,26 @@ class PowerUpButton extends React.Component {
     this.props.form.validateFields(['amount']);
   }
 
-  renderTo() {
-    const { intl, form } = this.props;
-    const { getFieldDecorator } = form;
-    return (
-      <Form.Item label={<FormattedMessage id="to" defaultMessage="To" />}>
-        {getFieldDecorator('to', {
-          rules: [
-            {
-              required: true,
-              message: intl.formatMessage({
-                id: 'to_error_empty',
-                defaultMessage: 'Recipient is required.',
-              }),
-            },
-            { validator: this.props.validateUsername },
-          ],
-        })(
-          <Input
-            type="text"
-            placeholder={intl.formatMessage({
-              id: 'to_placeholder',
-              defaultMessage: 'Payment recipient',
-            })}
-          />,
-        )}
-      </Form.Item>
-    );
-  }
-
   render() {
-    const { intl, form, user } = this.props;
+    const { intl, form, user, totalVestingShares, totalVestingFundSteem } = this.props;
     const { getFieldDecorator } = form;
     const { displayModal } = this.state;
-    const balance = _.get(user, 'balance', 0);
+    const balance = parseFloat(
+      formatter.vestToSteem(user.vesting_shares, totalVestingShares, totalVestingFundSteem),
+    ).toFixed(3);
 
     return (
-      <div className="WalletAction">
+      <div>
         <Action
           className="WalletAction"
-          primary
-          text={intl.formatMessage({ id: 'power_up', defaultMessage: 'Power up' })}
+          text={intl.formatMessage({ id: 'power_down', defaultMessage: 'Power down' })}
           onClick={this.displayModal}
         />
         {displayModal && (
           <Modal
             visible={displayModal}
-            title={intl.formatMessage({
-              id: 'power_up_title',
-              defaultMessage: 'Convert to steem power',
-            })}
-            okText={intl.formatMessage({ id: 'power_up', defaultMessage: 'Power up' })}
+            title={intl.formatMessage({ id: 'power_down', defaultMessage: 'Power down' })}
+            okText={intl.formatMessage({ id: 'power_down', defaultMessage: 'Power down' })}
             cancelText={intl.formatMessage({ id: 'cancel', defaultMessage: 'Cancel' })}
             onOk={this.handleContinueClick}
             onCancel={this.hideModal}
@@ -163,15 +136,8 @@ class PowerUpButton extends React.Component {
             <Form hideRequiredMark>
               <p>
                 <FormattedMessage
-                  id="power_up_description"
-                  defaultMessage="Convert your steem to steem power to earn more curation rewards."
-                />
-              </p>
-              <br />
-              <p>
-                <FormattedMessage
-                  id="power_up_warning"
-                  defaultMessage="When you convert to steem power, it requires 3 months (13 payments) to convert back to steem."
+                  id="power_down_description"
+                  defaultMessage="When you use your steem power to power down, you will receive equal distributions of steem weekly, over a 13 week period."
                 />
               </p>
               <Form.Item label={<FormattedMessage id="amount" defaultMessage="Amount" />}>
@@ -193,7 +159,7 @@ class PowerUpButton extends React.Component {
                           'Incorrect format. Use comma or dot as decimal separator. Use at most 3 decimal places.',
                       }),
                     },
-                    { validator: this.props.validateSteemBalance },
+                    { validator: this.props.validateSPBalance },
                   ],
                 })(
                   <Input
@@ -210,7 +176,7 @@ class PowerUpButton extends React.Component {
                   values={{
                     amount: (
                       <a role="presentation" onClick={this.handleBalanceClick}>
-                        {balance}
+                        {`${balance} SP`}
                       </a>
                     ),
                   }}
@@ -224,4 +190,4 @@ class PowerUpButton extends React.Component {
   }
 }
 
-export default PowerUpButton;
+export default PowerDownButton;

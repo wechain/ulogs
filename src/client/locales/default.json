@@ -315,5 +315,9 @@
   "login_with_steemconnect": "Login with SteemConnect",
   "follows_you": "Follows you",
   "power_up": "Power up",
-  "power_down": "Power down"
+  "power_down": "Power down",
+  "power_up_title": "Convert to steem power",
+  "power_up_description": "Convert your steem to steem power to earn more curation rewards.",
+  "power_up_warning": "When you convert to steem power, it requires 3 months (13 payments) to convert back to steem.",
+  "power_down_description": "When you use your steem power to power down, you will receive equal distributions of steem weekly, over a 13 week period."
 }

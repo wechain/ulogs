@@ -10,6 +10,7 @@ import Action from '../Button/Action';
 import ClaimRewardsBlock from '../../wallet/ClaimRewardsBlock';
 import CryptoTrendingCharts from './CryptoTrendingCharts';
 import PowerUpButton from '../../wallet/PowerUpButton';
+import PowerDownButton from '../../wallet/PowerDownButton';
 
 @withRouter
 @injectIntl
@@ -60,6 +61,7 @@ class WalletSidebar extends React.Component {
         <CryptoTrendingCharts cryptos={cryptos} />
         {displayActionButtons && <ClaimRewardsBlock />}
         {displayActionButtons && <PowerUpButton />}
+        {displayActionButtons && <PowerDownButton />}
       </div>
     );
   }
