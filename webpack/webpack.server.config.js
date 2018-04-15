@@ -3,10 +3,11 @@ const path = require('path');
 const webpack = require('webpack');
 const configUtils = require('./configUtils');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const baseDir = path.resolve(__dirname, '..');
 
 module.exports = {
+  mode: 'production',
   entry: path.resolve(baseDir, './src/server/index.js'),
   output: {
     path: path.join(path.resolve(__dirname, '..')),
@@ -25,15 +26,8 @@ module.exports = {
     rules: [
       {
         test: configUtils.MATCH_JS_JSX,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react', 'stage-2'],
-            plugins: ['transform-decorators-legacy', 'transform-runtime'],
-            cacheDirectory: true,
-          },
-        },
+        include: path.resolve(baseDir, 'src'),
+        loader: 'babel-loader',
       },
     ],
   },
