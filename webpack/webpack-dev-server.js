@@ -7,6 +7,7 @@ const configUtils = require('./configUtils');
 const baseDir = path.resolve(__dirname, '..');
 
 module.exports = {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: path.resolve(baseDir, './src/client/index.js'),
   output: {
@@ -27,7 +28,9 @@ module.exports = {
         ),
         STEEMJS_URL: JSON.stringify(process.env.STEEMJS_URL || 'https://api.steemit.com'),
         IS_BROWSER: JSON.stringify(true),
-        SIGNUP_URL: JSON.stringify(process.env.SIGNUP_URL || 'https://signup.steemit.com/?ref=busy'),
+        SIGNUP_URL: JSON.stringify(
+          process.env.SIGNUP_URL || 'https://signup.steemit.com/?ref=busy',
+        ),
       },
     }),
   ],
