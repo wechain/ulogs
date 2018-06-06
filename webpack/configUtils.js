@@ -4,7 +4,7 @@ const paths = require('../scripts/paths');
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
-const SERVER_PORT = process.env.PORT || 3000;
+const SERVER_PORT = process.env.PORT || 80;
 const CONTENT_PORT = IS_DEV ? SERVER_PORT + 1 : SERVER_PORT;
 
 const MATCH_JS = /\.js$/i;
@@ -29,7 +29,7 @@ const DEFINE_PLUGIN = new webpack.DefinePlugin({
     process.env.STEEMCONNECT_CLIENT_ID || 'busy.app',
   ),
   'process.env.STEEMCONNECT_REDIRECT_URL': JSON.stringify(
-    process.env.STEEMCONNECT_REDIRECT_URL || 'http://localhost:3000/callback',
+    process.env.STEEMCONNECT_REDIRECT_URL || 'http://localhost/callback',
   ),
   'process.env.STEEMCONNECT_HOST': JSON.stringify(
     process.env.STEEMCONNECT_HOST || 'https://steemconnect.com',
