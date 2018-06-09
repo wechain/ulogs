@@ -68,6 +68,7 @@ class TrendingTagsMenu extends React.Component {
                 <PopoverMenuItem key={tag} fullScreenHidden>
                   {tag}
                 </PopoverMenuItem>
+                
               ))}
             </PopoverMenu>
           }
