@@ -202,7 +202,7 @@ export function createPost(postData) {
             parentPermlink,
             author,
             title,
-            newBody,
+            newBody+'<br /><br />This post was done from <a href="http://ulogs.org">Ulog</a>',
             jsonMetadata,
             !isUpdating && reward,
             !isUpdating && upvote,
