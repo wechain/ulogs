@@ -9,21 +9,21 @@ import './HeroBannerSlider.less';
 class HeroBanner extends React.Component {
   static SLIDER_CONTENTS = [
     {
-      image: '/images/hero-1.svg',
+      image: '/images/hero-1.png',
       titleID: 'hero_banner_title_1',
       defaultTitle: 'Write and publish a ULOG on steem',
       className: 'HeroBannerSlider__image',
       number: 1,
     },
     {
-      image: '/images/hero-2.svg',
+      image: '/images/hero-2.png',
       titleID: 'hero_banner_title_2',
       defaultTitle: 'Our Community will become your true fan and upvote your ULOG',
       className: 'HeroBannerSlider__image',
       number: 2,
     },
     {
-      image: '/images/hero-3.svg',
+      image: '/images/hero-3.png',
       titleID: 'hero_banner_title_3',
       defaultTitle: 'Earn variety of rewards and steem from your true fan',
       className: 'HeroBannerSlider__image',
