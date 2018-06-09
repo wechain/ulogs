@@ -121,8 +121,8 @@ class Editor extends React.Component {
     }
 
     this.props.form.setFieldsValue({
-      title: post.title,
-      topics: post.topics,
+      title: 'ULOGS '+ post.title,
+      topics: 'ulog'+post.topics,
       body: post.body,
       reward,
       upvote: post.upvote,
@@ -175,7 +175,7 @@ class Editor extends React.Component {
     this.setBodyAndRender(values.body);
 
     if (Object.values(form.getFieldsError()).filter(e => e).length > 0) return;
-
+form
     this.props.onUpdate(values);
   }
 
@@ -183,6 +183,7 @@ class Editor extends React.Component {
     e.preventDefault();
 
     this.props.form.validateFieldsAndScroll((err, values) => {
+      console.log(values);
       if (err) this.props.onError();
       else this.props.onSubmit(values);
     });
@@ -205,7 +206,7 @@ class Editor extends React.Component {
       <Form className="Editor" layout="vertical" onSubmit={this.handleSubmit}>
         <Helmet>
           <title>
-            {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Busy
+            {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Ulogs
           </title>
         </Helmet>
         <Form.Item
