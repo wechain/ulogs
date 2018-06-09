@@ -97,7 +97,7 @@ export const sendComment = (parentPost, body, isUpdating = false, originalCommen
   const permlink = isUpdating
     ? originalComment.permlink
     : createCommentPermlink(parentAuthor, parentPermlink);
-  const jsonMetadata = { tags: [category], community: 'busy', app: `busy/${version}` };
+  const jsonMetadata = { tags: [category], community: 'ulog', app: `ulog/${version}` };
 
   const newBody = isUpdating ? getBodyPatchIfSmaller(originalComment.body, body) : body;
 
@@ -105,7 +105,7 @@ export const sendComment = (parentPost, body, isUpdating = false, originalCommen
     type: SEND_COMMENT,
     payload: {
       promise: steemConnectAPI
-        .comment(parentAuthor, parentPermlink, author, permlink, '', newBody, jsonMetadata)
+        .comment(parentAuthor, parentPermlink, author, permlink, '', newBody + '<br /><br />This comments was done from <a href="http://ulogs.org">Ulog</a>', jsonMetadata)
         .then(resp => {
           const focusedComment = {
             author: resp.result.operations[0][1].author,
@@ -116,7 +116,6 @@ export const sendComment = (parentPost, body, isUpdating = false, originalCommen
           if (window.analytics) {
             window.analytics.track('Comment', {
               category: 'comment',
-              label: 'submit',
               value: 3,
             });
           }
