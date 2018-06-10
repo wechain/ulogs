@@ -14,11 +14,11 @@ const TopicSelector = ({ sort, isSingle, topics, onTopicClose, onSortChange }) =
         ))}
     </div>
     <SortSelector sort={sort} onChange={onSortChange}>
-      <SortSelector.Item key="trending">
-        <FormattedMessage id="sort_trending" defaultMessage="Trending" />
-      </SortSelector.Item>
       <SortSelector.Item key="created">
         <FormattedMessage id="sort_created" defaultMessage="Created" />
+      </SortSelector.Item>
+      <SortSelector.Item key="trending">
+        <FormattedMessage id="sort_trending" defaultMessage="Trending" />
       </SortSelector.Item>
       <SortSelector.Item key="active">
         <FormattedMessage id="sort_active" defaultMessage="Active" />
@@ -39,7 +39,7 @@ TopicSelector.propTypes = {
 };
 
 TopicSelector.defaultProps = {
-  sort: 'trending',
+  sort: 'created',
   isSingle: true,
   topics: [],
   onTopicClose: () => {},
