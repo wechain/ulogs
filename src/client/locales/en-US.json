@@ -190,7 +190,7 @@
   "title_error_too_long": "Title must be less than 255 characters.",
   "topics": "Topics",
   "topics_placeholder": "Add story topics here",
-  "topics_extra": "Separate topics with commas. Only lowercase letters, numbers and hyphen characters are permitted.",
+  "topics_extra": "If your post is not a ulog, kindly remove the default \"ULOG\" from title and kindly remove default \"#ulog\", from among the tags below. Please help us as we try to reserve #ulog on for ULOGS.",
   "topics_error_empty": "Please enter topics",
   "topics_error_count": "You must add 1 to 5 topics.",
   "topics_error_invalid_topic": "Topic {topic} is invalid.",
