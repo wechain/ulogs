@@ -121,7 +121,7 @@ class Editor extends React.Component {
     }
 
     this.props.form.setFieldsValue({
-      title: 'ULOGS '+ post.title,
+      title: 'ULOG: '+ post.title,
       topics: 'ulog'+post.topics,
       body: post.body,
       reward,
@@ -206,7 +206,7 @@ form
       <Form className="Editor" layout="vertical" onSubmit={this.handleSubmit}>
         <Helmet>
           <title>
-            {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Ulogs
+            {intl.formatMessage({ id: 'write_post', defaultMessage: 'Write post' })} - Ulog
           </title>
         </Helmet>
         <Form.Item
