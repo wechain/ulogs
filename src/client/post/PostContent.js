@@ -179,7 +179,7 @@ class PostContent extends React.Component {
     if (isBannedPost(content)) return <DMCARemovedMessage className="center" />;
 
     const postMetaData = jsonParse(content.json_metadata);
-    const busyHost = appUrl || 'https://busy.org';
+    const busyHost = appUrl || 'http://ulogs.org';
     let canonicalHost = busyHost;
 
     if (_.indexOf(postMetaData.app, 'steemit') === 0) {
@@ -216,7 +216,7 @@ class PostContent extends React.Component {
     const canonicalUrl = `${canonicalHost}${dropCategory(content.url)}`;
     const url = `${busyHost}${dropCategory(content.url)}`;
     const ampUrl = `${url}/amp`;
-    const metaTitle = `${title} - Busy`;
+    const metaTitle = `${title} - Ulog`;
 
     return (
       <div>
