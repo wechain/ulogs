@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-
+import {Carousel} from 'react-bootstrap';
 import { getFeedContent } from './feedActions';
 import { getIsLoaded, getIsAuthenticated } from '../reducers';
 import SubFeed from './SubFeed';
@@ -34,6 +34,7 @@ class Page extends React.Component {
     return store.dispatch(getFeedContent({ sortBy, category, limit: 10 }));
   }
 
+
   handleSortChange = key => {
     const { category } = this.props.match.params;
     if (category) {
@@ -61,10 +62,44 @@ class Page extends React.Component {
           <meta name="robots" content={robots} />
         </Helmet>
         <ScrollToTop />
+
         <ScrollToTopOnMount />
-        <HeroBannerContainer />
+        { authenticated?
+             <Carousel wrap={'true'}>
+                  <Carousel.Item >
+                    <img width={'100%'} height={'100%'} alt="900x500" src="/images/slide1.jpg" />
+                    <Carousel.Caption>
+                   
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img width={'100%'}  height={'100%'} alt="900x500" src="/images/slide2.jpg" />
+                    <Carousel.Caption>
+
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img width={'100%'}  height={'100%'} alt="900x500" src="/images/slide3.jpg" />
+                    <Carousel.Caption>
+                    
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                   <Carousel.Item>
+                    <img width={'100%'}  height={'100%'} alt="900x500" src="/images/slide4.jpg" />
+                    <Carousel.Caption>
+                    
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                </Carousel>
+                :
+                <HeroBannerContainer />
+              }
+           
         <div className="shifted">
+          
           <div className="feed-layout container">
+          
+              
             <Affix className="leftContainer" stickPosition={77}>
               <div className="left">
                 <LeftSidebar />
@@ -75,7 +110,10 @@ class Page extends React.Component {
                 <RightSidebar />
               </div>
             </Affix>
+      
             <div className="center">
+
+
               {displayTopicSelector && <TrendingTagsMenu />}
               {shouldDisplaySelector && (
                 <TopicSelector
