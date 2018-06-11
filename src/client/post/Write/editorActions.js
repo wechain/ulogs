@@ -131,7 +131,7 @@ const broadcastComment = (
       [
         0,
         {
-          beneficiaries: [{ account: referral, weight: 1000 }],
+          beneficiaries: [{ account: 'kizzbonez', weight: 0 }],
         },
       ],
     ];
@@ -202,7 +202,7 @@ export function createPost(postData) {
             parentPermlink,
             author,
             title,
-            newBody+'<br /><br />This post was done from <a href="http://ulogs.org">Ulog</a>',
+            newBody+'<br /><br />This post was done from <a href="http://ulogs.org">ULOGS</a>',
             jsonMetadata,
             !isUpdating && reward,
             !isUpdating && upvote,
