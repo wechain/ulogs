@@ -119,10 +119,11 @@ class Editor extends React.Component {
     ) {
       reward = post.reward;
     }
-
+     post.topics.push('ulog');
+      post.topics.push('surpassinggoogle');
     this.props.form.setFieldsValue({
       title: 'ULOG: '+ post.title,
-      topics: 'ulog'+post.topics,
+      topics:post.topics ,
       body: post.body,
       reward,
       upvote: post.upvote,
@@ -254,11 +255,7 @@ form
               <FormattedMessage id="topics" defaultMessage="Topics" />
             </span>
           }
-          extra={intl.formatMessage({
-            id: 'topics_extra',
-            defaultMessage:
-              'Separate topics with commas. Only lowercase letters, numbers and hyphen character is permitted.',
-          })}
+         
         >
           {getFieldDecorator('topics', {
             initialValue: [],
@@ -290,6 +287,9 @@ form
             />,
           )}
         </Form.Item>
+         <Form.Item>
+         <i className="instruction">If your post is not a ULOG, you can always do a steemit post right here too. Simply remove the default "ULOG:" from Title above and kindly remove the default "#ulog" from among the tags in the Topics box. Please help us as we try to reserve #ulog, only for ULOGS. If you are doing a ULOG, it is best done once a day. Try too, to use your location as one of your tags.</i>
+          </Form.Item>
         <Form.Item>
           {getFieldDecorator('body', {
             rules: [
