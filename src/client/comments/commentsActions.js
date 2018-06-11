@@ -105,7 +105,7 @@ export const sendComment = (parentPost, body, isUpdating = false, originalCommen
     type: SEND_COMMENT,
     payload: {
       promise: steemConnectAPI
-        .comment(parentAuthor, parentPermlink, author, permlink, '', newBody + '<br /><br />This comments was done from <a href="http://ulogs.org">Ulog</a>', jsonMetadata)
+        .comment(parentAuthor, parentPermlink, author, permlink, '', newBody + '<br /><br />This comments was done from <a href="http://ulogs.org">ULOGS</a>', jsonMetadata)
         .then(resp => {
           const focusedComment = {
             author: resp.result.operations[0][1].author,
