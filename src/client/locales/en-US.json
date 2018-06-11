@@ -177,7 +177,7 @@
   "latest_comments": "Latest comments",
   "latest_recommendations": "Latest recommendations",
   "last_drafts": "Last drafts",
-  "new_to_busy": "New to ULOG?",
+  "new_to_busy": "New to ULOGS?",
   "never_written_post": "Never written a post?",
   "start_now": "Start now",
   "drop_image": "Drop your images here",
@@ -190,7 +190,7 @@
   "title_error_too_long": "Title must be less than 255 characters.",
   "topics": "Topics",
   "topics_placeholder": "Add story topics here",
-  "topics_extra": "If your post is not a ulog, kindly remove the default \"ULOG\" from title and kindly remove default \"#ulog\", from among the tags below. Please help us as we try to reserve #ulog on for ULOGS.",
+  "topics_extra": "If your post is a ULOG, you always do a steemit post right here too. Simply remove the default \"ULOG:\" from Title above and kindly remove the default \"#ulog\" from among the tags in the Topics box. Please help us as we try to reserve #ulog, only for ULOGS. If you are doing a ULOG, it is best done once a day. Try too, to use your location as one of your tags.",
   "topics_error_empty": "Please enter topics",
   "topics_error_count": "You must add 1 to 5 topics.",
   "topics_error_invalid_topic": "Topic {topic} is invalid.",
@@ -347,6 +347,6 @@
   "beneficiaries": "Beneficiaries",
   "all": "All",
   "hero_banner_title_1": "Write and publish a ULOG on Steem",
-  "hero_banner_title_2": "Our community will become your true fans upvote your ULOG",
-  "hero_banner_title_3": "Earn a variety of rewards and Steem from your true fans"
+  "hero_banner_title_2": "Our community of true fans will heartily upvote your ULOGS.",
+  "hero_banner_title_3": "Earn a variety of rewards and steem from True Fans"
 }
