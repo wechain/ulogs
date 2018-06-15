@@ -119,10 +119,10 @@ class Editor extends React.Component {
     ) {
       reward = post.reward;
     }
-     post.topics.push('ulog');
-      post.topics.push('surpassinggoogle');
+  
+
     this.props.form.setFieldsValue({
-      title: 'ULOG: '+ post.title,
+      title: post.title,
       topics:post.topics ,
       body: post.body,
       reward,
@@ -197,13 +197,15 @@ form
   }
 
   render() {
-    const { intl, form, loading, isUpdating, saving, draftId } = this.props;
+
+     const { intl, form, loading, isUpdating, saving, draftId } = this.props;
     const { getFieldDecorator } = form;
     const { body, bodyHTML } = this.state;
 
     const { words, minutes } = readingTime(bodyHTML);
-
+   
     return (
+
       <Form className="Editor" layout="vertical" onSubmit={this.handleSubmit}>
         <Helmet>
           <title>
@@ -218,7 +220,6 @@ form
           }
         >
           {getFieldDecorator('title', {
-            initialValue: '',
             rules: [
               {
                 required: true,
@@ -240,7 +241,6 @@ form
               ref={title => {
                 this.title = title;
               }}
-              onChange={this.onUpdate}
               className="Editor__title"
               placeholder={intl.formatMessage({
                 id: 'title_placeholder',
