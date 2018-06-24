@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { injectIntl, FormattedMessage } from 'react-intl';
@@ -352,7 +352,7 @@ class Topnav extends React.Component {
         <div className="topnav-layout">
           <div className={classNames('left', { 'Topnav__mobile-hidden': searchBarActive })}>
             <Link className="Topnav__brand" to="/">
-              <img src="https://scontent.fmnl3-2.fna.fbcdn.net/v/t1.15752-9/34963505_2259056847454098_361837959462256640_n.png?_nc_cat=0&_nc_eui2=AeFMlkKdkeNYSe-T1GY_8DXi1pV-780TnoagzqRxcyhyyst5Ja-R7JI3YOOpL57uoDbOORqDvkX1zkEiTS-cangcAOzNtoT4naMgYK5ga-SHpA&oh=3847f68763462622c2c78f7476717e7e&oe=5BA7FD20" className="Topnav__logo" />
+              <img src="images/logo.png" alt="Logo" className="Topnav__logo" />
             </Link>
             <span className="Topnav__version">Alpha</span>
           </div>
